@@ -14,6 +14,7 @@
 ## Build Log
 1. Created README, outlined thought process & test plans
 1. Initialized Command class, test for simulation_active? method
+1. Added command.execute method with basic input validation
 
 ## Tests
 - Feedback / throw error when robot falls off table.
