@@ -10,13 +10,30 @@
         - Validate command (PLACE, MOVE, LEFT, RIGHT, REPORT)
 - How to REPORT position?
     - Would love to do a graphical map
+        ```
+        - - - - -
+        - o - - -
+        - - - - -
+        - - - - -
+        - - - - -
 
+        Robot is at position 1,3 and facing East
+        ```
+- Build sequence: 
+    1. Command (to receive input) => 
+    1. Robot (initialize) => 
+    1. Position (so Robot is aware of where it is) => 
+    1. Report (dependant on Position)
+
+---
 ## Build Log
-1. Created README, outlined thought process & test plans
-1. Initialized Command class, test for simulation_active? method
-1. Added command.execute method with basic input validation
-1. Inserted ASCII art for a bit of fun
+1. Created README, outlined thought process & test plans.
+1. Initialized Command class, test for simulation_active? method.
+1. Added command.execute method with basic input validation.
+1. Inserted ASCII art for a bit of fun.
+1. Clarified further thoughts with a plan of action.
 
+---
 ## Tests
 - Feedback / throw error when robot falls off table.
 - Validate position. Throw error if:
@@ -25,7 +42,6 @@
 - Validate commands.  Throw error if:
     - Command is invalid (PLUCE).
     - Commands entired prior to a `PLACE X,Y,F`
-
 
 ---
 ## Credits
