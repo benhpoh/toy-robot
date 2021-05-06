@@ -115,6 +115,20 @@ class Place_Argument_Validation_Test < MiniTest::Test
         assert_equal(expected, actual)
     end
 
+    def test_place_with_bad_arguments
+        command = Command.new
+        actual = command.execute("PLACE 4 2 NORTH")[:command_successful]
+        expected = @@unacceptable_command
+        assert_equal(expected, actual)
+    end
+
+    def test_place_with_invalid_direction
+        command = Command.new
+        actual = command.execute("PLACE 4,2,NORTHWEST")[:command_successful]
+        expected = @@unacceptable_command
+        assert_equal(expected, actual)
+    end
+
     def test_place_with_good_arguments_1
         command = Command.new
         actual = command.execute("PLACE 4,2,NORTH")[:command_successful]
@@ -126,6 +140,27 @@ class Place_Argument_Validation_Test < MiniTest::Test
         command = Command.new
         actual = command.execute("place 1,4,west")[:command_successful]
         expected = @@acceptable_command
+        assert_equal(expected, actual)
+    end
+
+    def test_place_with_0_0_coordinate
+        command = Command.new
+        actual = command.execute("place 0,0,west")[:command_successful]
+        expected = @@acceptable_command
+        assert_equal(expected, actual)
+    end
+
+    def test_place_with_4_4_coordinate
+        command = Command.new
+        actual = command.execute("place 4,4,west")[:command_successful]
+        expected = @@acceptable_command
+        assert_equal(expected, actual)
+    end
+
+    def test_place_off_table_limits
+        command = Command.new
+        actual = command.execute("place 5,5,west")[:command_successful]
+        expected = @@unacceptable_command
         assert_equal(expected, actual)
     end
 end

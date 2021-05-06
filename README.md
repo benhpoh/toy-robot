@@ -29,6 +29,7 @@
     - Robot needs to know what the table dimension is.
     - Does robot need to be placed upon initialization? No. It can be issued commands (that will be ignored) before being placed.
     - Init with table boundaries, then reference the table boundary when being placed or moved.
+- Robot now knows PLACE method. Should have some unit tests on ROBOT class
 
 ---
 ## Build Log
@@ -37,8 +38,10 @@
 1. Added command.execute method with basic input validation.
 1. Inserted ASCII art for a bit of fun.
 1. Clarified further thoughts with a plan of action.
-1. Added tests to Command class to validate PLACE arguments
-1. Added control flow to command.execute method
+1. Added tests to Command class to validate PLACE arguments.
+1. Added control flow to command.execute method.
+1. Created Robot class & Position class.
+1. Completed robot.place method.
 
 ---
 ## Tests
@@ -54,6 +57,13 @@
 
 ## TODO
 - ~~Methods to be called by Command class upon valid input (use case statement?)~~
+- Robot class methods
+    - ~~robot.place~~
+    - robot.move
+    - robot.left
+    - robot.right
+    - robot.report
+- Robot class unit test
 
 ---
 ## Credits
