@@ -21,6 +21,30 @@ class Robot
             error_message: nil
         }
     end
+
+    def move
+        
+    end
+
+    def left
+        directions = [:NORTH, :EAST, :SOUTH, :WEST]
+        @position.direction = directions[directions.index(@position.direction) - 1]
+        # Unlike javascript, index[-1] loops backwards around the array
+        {
+            execution_succesful: true,
+            error_message: nil
+        }
+    end
+
+    def right
+        directions = [:NORTH, :EAST, :SOUTH, :WEST].reverse!
+        @position.direction = directions[directions.index(@position.direction) - 1]
+        # Unlike javascript, index[-1] loops backwards around the array
+        {
+            execution_succesful: true,
+            error_message: nil
+        }
+    end
     
     def report
         {

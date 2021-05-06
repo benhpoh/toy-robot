@@ -46,15 +46,17 @@
 1. Created Robot class & Position class.
 1. Completed robot.place method.
 1. Completed robot.report method and tests.
+1. Wrote unit tests to verify robot.left & robot.right functions as intended.
+1. Added an all_tests script.
 
 ---
 ## Tests
 - Feedback / throw error when robot falls off table.
 - Validate position. Throw error if:
-    - Robot is placed in unacceptable location.
-    - LEFT / RIGHT returns incorrect direction
+    - ~~Robot is placed in unacceptable location.~~
+    - ~~LEFT / RIGHT returns incorrect direction~~
 - Validate commands.  Throw error if:
-    - Command is invalid (PLUCE).
+    - ~~Command is invalid (PLUCE).~~
     - Commands entired prior to a `PLACE X,Y,F`
 
 ---
@@ -64,8 +66,8 @@
 - Robot class methods
     - ~~robot.place~~
     - robot.move
-    - robot.left
-    - robot.right
+    - ~~robot.left~~
+    - ~~robot.right~~
     - ~~robot.report~~
     - robot.generate_map for graphical output
 - Robot class unit test
