@@ -21,4 +21,15 @@ class Robot
             error_message: nil
         }
     end
+    
+    def report
+        {
+            execution_succesful: true,
+            error_message: nil,
+            position_x: @position.x,
+            position_y: @position.y,
+            direction: @position.direction,
+            graphical_map: nil
+        }
+    end
 end
