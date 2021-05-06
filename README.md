@@ -45,7 +45,7 @@
 1. Added control flow to command.execute method.
 1. Created Robot class & Position class.
 1. Completed robot.place method.
-1. Completed robot.report method.
+1. Completed robot.report method and tests.
 
 ---
 ## Tests
