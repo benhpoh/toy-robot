@@ -38,6 +38,7 @@
 1. Inserted ASCII art for a bit of fun.
 1. Clarified further thoughts with a plan of action.
 1. Added tests to Command class to validate PLACE arguments
+1. Added control flow to command.execute method
 
 ---
 ## Tests
@@ -52,7 +53,7 @@
 ---
 
 ## TODO
-- Methods to be called by Command class upon valid input (use case statement?)
+- ~~Methods to be called by Command class upon valid input (use case statement?)~~
 
 ---
 ## Credits

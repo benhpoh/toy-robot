@@ -81,13 +81,6 @@ class Command_Validation_Test < MiniTest::Test
         assert_equal(expected, actual)
     end
 
-    def test_non_place_command_with_arguments
-        command = Command.new
-        actual = command.execute("REPORT 0,0,WEST")[:command_successful]
-        expected = @@unacceptable_command
-        assert_equal(expected, actual)
-    end
-
     def test_invalid_pluce_command
         command = Command.new
         actual = command.execute("PLUCE")[:command_successful]

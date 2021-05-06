@@ -20,20 +20,29 @@ class Command
         command, argument = input.to_s.upcase.split(" ")
         command = command.to_sym
 
-        if invalid_command?(command)
+        
+        case command
+        when :PLACE
+            # Validate PLACE's argument
+            if invalid_argument?(argument)
+                @command_response[:command_successful] = false
+                @command_response[:error_message] = "The argument '#{argument}' is invalid."
+
+                return @command_response
+            end
+            # call robot.place(X,Y,FACE)
+        when :MOVE
+            # call robot.move
+        when :LEFT
+            # call robot.left
+        when :RIGHT
+            # call robot.right
+        when :REPORT
+            # call robot.report
+        else
             @command_response[:command_successful] = false
             @command_response[:error_message] = "Invalid command entered."
-
-            return @command_response
-        end
-
-        if command == :PLACE
-            status = valid_argument?(argument) ? "Ok" : "Error"
-            # TODO. Full steps of receiving a PLACE command
-        elsif !argument.nil?
-            @command_response[:command_successful] = false
-            @command_response[:error_message] = "The command '#{command}' does not accept arguments."
-
+    
             return @command_response
         end
         
@@ -48,16 +57,10 @@ class Command
         @command_response[:command_successful] = nil
         @command_response[:error_message] = nil
     end
-
-    # Checks if command provided is invalid
-    def invalid_command?(input)
-        valid_commands = [:PLACE, :MOVE, :LEFT, :RIGHT, :REPORT]
-        !valid_commands.include?(input)
-    end
     
-    # Checks if arguments provided is acceptable
-    def valid_argument?(arguments)
-        return false if arguments.nil?
+    # Checks if arguments provided are invalid
+    def invalid_argument?(arguments)
+        return true if arguments.nil?
 
         # arguments = "X,Y,DIRECTION"
         *positions, direction = arguments.split(",")
@@ -65,11 +68,8 @@ class Command
         position_x, position_y = positions.map { |num_string| num_string.to_i }
         direction = direction.to_sym
 
-        if valid_position?(position_x) && valid_position?(position_y) && valid_direction?(direction)
-            true
-        else
-            false
-        end
+        # returns true if any of the 3 arguments are invalid
+        !(valid_position?(position_x) && valid_position?(position_y) && valid_direction?(direction))
     end
 
     # Disallows negative coordinate arguments
