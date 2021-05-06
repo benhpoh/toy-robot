@@ -33,6 +33,8 @@
     - Robot's methods are PLACE, LEFT, RIGHT, MOVE, REPORT
     - Will first need to test REPORT, as I will depend on the output of REPORT to validate PLACE, LEFT, RIGHT is working.
     - MOVE will need to correctly return an error when falling off the table.
+- I've broken the Command_Validation unit tests because it was written assuming commands can be provided prior to a PLACE command.
+    - Resolved it by checking if Robot has been placed. If not, invalidates command and returns an error.
 
 ---
 ## Build Log
@@ -48,16 +50,17 @@
 1. Completed robot.report method and tests.
 1. Wrote unit tests to verify robot.left & robot.right functions as intended.
 1. Added an all_tests script.
+1. Created more tests to confirm commands issued prior to PLACE is rejected.
 
 ---
 ## Tests
 - Feedback / throw error when robot falls off table.
-- Validate position. Throw error if:
+- ~~Validate position. Throw error if:~~
     - ~~Robot is placed in unacceptable location.~~
     - ~~LEFT / RIGHT returns incorrect direction~~
-- Validate commands.  Throw error if:
+- ~~Validate commands.  Throw error if:~~
     - ~~Command is invalid (PLUCE).~~
-    - Commands entired prior to a `PLACE X,Y,F`
+    - ~~Commands entired prior to a `PLACE X,Y,F`~~
 
 ---
 
@@ -71,6 +74,7 @@
     - ~~robot.report~~
     - robot.generate_map for graphical output
 - Robot class unit test
+- ~~If...else block to disregard commands before robot is placed~~
 
 ---
 ## Credits

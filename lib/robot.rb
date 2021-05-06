@@ -1,8 +1,11 @@
 require_relative 'position'
 
 class Robot
+    attr_reader :is_placed
+
     def initialize(table_width, table_height)
         @position = Position.new(table_width, table_height)
+        @is_placed = false
     end
 
     def place(arguments)
@@ -16,6 +19,8 @@ class Robot
         @position.y = position_y
         @position.direction = direction
 
+        @is_placed = true 
+
         {
             execution_succesful: true,
             error_message: nil
@@ -23,7 +28,7 @@ class Robot
     end
 
     def move
-        
+        # Move method
     end
 
     def left

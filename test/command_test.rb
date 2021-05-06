@@ -39,15 +39,16 @@ class Command_Validation_Test < MiniTest::Test
         assert_equal(expected, actual)
     end
 
-    def test_move_command
+    def test_move_command_before_placing
         command = Command.new
         actual = command.execute("MOVE")[:command_successful]
-        expected = @@acceptable_command
+        expected = @@unacceptable_command
         assert_equal(expected, actual)
     end
 
     def test_lowercase_left_command
         command = Command.new
+        command.execute("PLACE 0,0,WEST")
         actual = command.execute("left")[:command_successful]
         expected = @@acceptable_command
         assert_equal(expected, actual)
@@ -55,6 +56,7 @@ class Command_Validation_Test < MiniTest::Test
 
     def test_mixedcase_left_command
         command = Command.new
+        command.execute("PLACE 0,0,WEST")
         actual = command.execute("Left")[:command_successful]
         expected = @@acceptable_command
         assert_equal(expected, actual)
@@ -62,22 +64,46 @@ class Command_Validation_Test < MiniTest::Test
 
     def test_uppercase_left_command
         command = Command.new
+        command.execute("PLACE 0,0,WEST")
         actual = command.execute("LEFT")[:command_successful]
         expected = @@acceptable_command
         assert_equal(expected, actual)
     end
 
+    def test_left_command_before_placing
+        command = Command.new
+        actual = command.execute("LEFT")[:command_successful]
+        expected = @@unacceptable_command
+        assert_equal(expected, actual)
+    end
+
     def test_right_command
         command = Command.new
+        command.execute("PLACE 0,0,WEST")
         actual = command.execute("right")[:command_successful]
         expected = @@acceptable_command
+        assert_equal(expected, actual)
+    end
+
+    def test_right_command_before_placing
+        command = Command.new
+        actual = command.execute("right")[:command_successful]
+        expected = @@unacceptable_command
         assert_equal(expected, actual)
     end
     
     def test_report_command
         command = Command.new
+        command.execute("PLACE 0,0,WEST")
         actual = command.execute("RePoRt")[:command_successful]
         expected = @@acceptable_command
+        assert_equal(expected, actual)
+    end
+
+    def test_report_command_before_placing
+        command = Command.new
+        actual = command.execute("RePoRt")[:command_successful]
+        expected = @@unacceptable_command
         assert_equal(expected, actual)
     end
 

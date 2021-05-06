@@ -37,27 +37,33 @@ class Command
             error_message: nil
         }
 
+        if command != :PLACE && @robot.is_placed == false
+            command = nil
+            # Invalidates all commands if robot isn't placed
+        end
+        
         case command
         when :PLACE
             # Validate PLACE's argument
             if invalid_argument?(argument)
                 @command_response[:command_successful] = false
                 @command_response[:error_message] = "The argument '#{argument}' is invalid."
-
+    
                 return @command_response
             end
+    
             execution_result = @robot.place(argument)
         when :MOVE
             # call robot.move
         when :LEFT
-            # call robot.left
+            execution_result = @robot.left
         when :RIGHT
-            # call robot.right
+            execution_result = @robot.right
         when :REPORT
-            # call robot.report
+            execution_result = @robot.report
         else
             @command_response[:command_successful] = false
-            @command_response[:error_message] = "Invalid command entered."
+            @command_response[:error_message] = "Invalid command entered. Has the robot been PLACED?"
     
             return @command_response
         end
