@@ -35,6 +35,10 @@
     - MOVE will need to correctly return an error when falling off the table.
 - I've broken the Command_Validation unit tests because it was written assuming commands can be provided prior to a PLACE command.
     - Resolved it by checking if Robot has been placed. If not, invalidates command and returns an error.
+- How to code the Move method?
+    - First determine where the robot is in relation to the table
+    - What direction is the robot facing? (East => position.x += 1, South => position.y -= 1)
+    - Is the resulting coordinate still within table confines? TODO: Validation.
 
 ---
 ## Build Log
@@ -52,6 +56,7 @@
 1. Added an all_tests script.
 1. Created more tests to confirm commands issued prior to PLACE is rejected.
 1. Wrote unit tests for Position class.
+1. Wrote unit tests for all robot.move scenarios.
 
 ---
 ## Tests
@@ -76,6 +81,7 @@
     - robot.generate_map for graphical output
 - Robot class unit test
 - ~~If...else block to disregard commands before robot is placed~~
+- Validation method to block MOVE command if robot falls off table
 
 ---
 ## Credits

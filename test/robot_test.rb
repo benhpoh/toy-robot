@@ -133,3 +133,86 @@ class Robot_Right_Test < MiniTest::Test
         assert_equal(expected, actual)
     end
 end
+
+class Robot_Move_Test < MiniTest::Test
+    def test_move_east_within_boundary
+        robot = Robot.new(5,5)
+        robot.place("0,0,EAST")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 1 && robot.report[:position_y] == 0 && move_response[:execution_succesful]
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_east_off_boundary
+        robot = Robot.new(5,5)
+        robot.place("4,0,EAST")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 4 && robot.report[:position_y] == 0 && move_response[:execution_succesful] == false
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_west_within_boundary
+        robot = Robot.new(5,5)
+        robot.place("4,0,WEST")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 3 && robot.report[:position_y] == 0 && move_response[:execution_succesful]
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_west_off_boundary
+        robot = Robot.new(5,5)
+        robot.place("0,0,WEST")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 0 && robot.report[:position_y] == 0 && move_response[:execution_succesful] == false
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_north_within_boundary
+        robot = Robot.new(5,5)
+        robot.place("0,0,NORTH")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 0 && robot.report[:position_y] == 1 && move_response[:execution_succesful]
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_north_off_boundary
+        robot = Robot.new(5,5)
+        robot.place("0,4,WEST")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 0 && robot.report[:position_y] == 4 && move_response[:execution_succesful] == false
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_south_within_boundary
+        robot = Robot.new(5,5)
+        robot.place("0,4,SOUTH")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 0 && robot.report[:position_y] == 3 && move_response[:execution_succesful]
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_move_south_off_boundary
+        robot = Robot.new(5,5)
+        robot.place("0,0,WEST")
+        move_response = robot.move
+
+        actual = robot.report[:position_x] == 0 && robot.report[:position_y] == 0 && move_response[:execution_succesful] == false
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+end

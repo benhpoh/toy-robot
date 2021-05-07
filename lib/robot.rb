@@ -5,6 +5,8 @@ class Robot
 
     def initialize(table_width, table_height)
         @position = Position.new(table_width, table_height)
+        @table_width = table_width
+        @table_height = table_height
         @is_placed = false
     end
 
@@ -28,7 +30,21 @@ class Robot
     end
 
     def move
-        # Move method
+        case @position.direction
+        when :EAST
+            @position.x += 1
+        when :WEST
+            @position.x -= 1
+        when :NORTH
+            @position.y += 1
+        when :SOUTH
+            @position.y -= 1
+        end
+
+        {
+            execution_succesful: true,
+            error_message: nil
+        }
     end
 
     def left
