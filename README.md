@@ -57,6 +57,7 @@
 1. Created more tests to confirm commands issued prior to PLACE is rejected.
 1. Wrote unit tests for Position class.
 1. Wrote unit tests for all robot.move scenarios.
+1. Completed robot.move method with all tests passing
 
 ---
 ## Tests
@@ -74,14 +75,14 @@
 - ~~Methods to be called by Command class upon valid input (use case statement?)~~
 - Robot class methods
     - ~~robot.place~~
-    - robot.move
+    - ~~robot.move~~
     - ~~robot.left~~
     - ~~robot.right~~
     - ~~robot.report~~
     - robot.generate_map for graphical output
 - Robot class unit test
 - ~~If...else block to disregard commands before robot is placed~~
-- Validation method to block MOVE command if robot falls off table
+- ~~Validation method to block MOVE command if robot falls off table~~
 
 ---
 ## Credits

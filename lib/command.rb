@@ -18,7 +18,6 @@ class Command
             command_successful: nil,
             error_message: nil
         }
-
     end
 
     def simulation_active?
@@ -51,16 +50,17 @@ class Command
     
                 return @command_response
             end
-    
             execution_result = @robot.place(argument)
         when :MOVE
-            # call robot.move
+            execution_result = @robot.move
         when :LEFT
             execution_result = @robot.left
         when :RIGHT
             execution_result = @robot.right
         when :REPORT
             execution_result = @robot.report
+        when :EXIT
+            @simulation_active = false
         else
             @command_response[:command_successful] = false
             @command_response[:error_message] = "Invalid command entered. Has the robot been PLACED?"
