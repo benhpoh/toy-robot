@@ -51,6 +51,7 @@
 1. Wrote unit tests to verify robot.left & robot.right functions as intended.
 1. Added an all_tests script.
 1. Created more tests to confirm commands issued prior to PLACE is rejected.
+1. Wrote unit tests for Position class.
 
 ---
 ## Tests
