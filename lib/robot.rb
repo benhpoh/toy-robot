@@ -14,7 +14,7 @@ class Robot
         @min_position_x = 0
         @max_position_x = table_width - 1
         # table width of 5 => max_position_x = 4
-        
+
         @min_position_y = 0
         @max_position_y = table_height - 1
         # table height of 5 => max_position_y = 4
@@ -80,6 +80,7 @@ class Robot
         {
             execution_succesful: true,
             error_message: nil,
+            output: "X: #{@position.x}, Y: #{@position.y}, DIRECTION: #{@position.direction}",
             position_x: @position.x,
             position_y: @position.y,
             direction: @position.direction,

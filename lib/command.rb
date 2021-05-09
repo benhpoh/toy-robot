@@ -36,7 +36,7 @@ class Command
             error_message: nil
         }
 
-        if command != :PLACE && @robot.is_placed == false
+        if ![:PLACE, :EXIT].include?(command) && @robot.is_placed == false
             command = nil
             # Invalidates all commands if robot isn't placed
         end
@@ -46,7 +46,7 @@ class Command
             # Validate PLACE's argument
             if invalid_argument?(argument)
                 @command_response[:command_successful] = false
-                @command_response[:error_message] = "The argument '#{argument}' is invalid."
+                @command_response[:error_message] = "The argument '#{argument}' is invalid. Please use the following format: PLACE X,Y,CARDINAL_DIRECTION"
     
                 return @command_response
             end
@@ -59,6 +59,7 @@ class Command
             execution_result = @robot.right
         when :REPORT
             execution_result = @robot.report
+            @command_response[:output] = execution_result[:output]
         when :EXIT
             @simulation_active = false
         else
@@ -79,6 +80,7 @@ class Command
     def reset_command_response
         @command_response[:command_successful] = nil
         @command_response[:error_message] = nil
+        @command_response[:output] = nil
     end
     
     # Checks if arguments provided are invalid

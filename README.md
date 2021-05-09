@@ -9,16 +9,6 @@
     - Command? Use command pattern?
         - Validate command (PLACE, MOVE, LEFT, RIGHT, REPORT)
 - How to REPORT position?
-    - Would love to do a graphical map
-        ```
-        - - - - -
-        - o - - -
-        - - - - -
-        - - - - -
-        - - - - -
-
-        Robot is at position 1,3 and facing East
-        ```
 - Build sequence: 
     1. ~~Command (to receive input)~~ =>
     1. Robot (initialize) => 
@@ -58,16 +48,18 @@
 1. Wrote unit tests for Position class.
 1. Wrote unit tests for all robot.move scenarios.
 1. Completed robot.move method with all tests passing
+1. Wrote acceptance test to validate code passes examples.
 
 ---
 ## Tests
-- Feedback / throw error when robot falls off table.
+- ~~Feedback / throw error when robot falls off table.~~
 - ~~Validate position. Throw error if:~~
     - ~~Robot is placed in unacceptable location.~~
     - ~~LEFT / RIGHT returns incorrect direction~~
 - ~~Validate commands.  Throw error if:~~
     - ~~Command is invalid (PLUCE).~~
     - ~~Commands entired prior to a `PLACE X,Y,F`~~
+- ~~Test to confirm Examples A, B, C from problem is achieved~~
 
 ---
 
@@ -79,8 +71,7 @@
     - ~~robot.left~~
     - ~~robot.right~~
     - ~~robot.report~~
-    - robot.generate_map for graphical output
-- Robot class unit test
+- ~~Robot class unit test~~
 - ~~If...else block to disregard commands before robot is placed~~
 - ~~Validation method to block MOVE command if robot falls off table~~
 
