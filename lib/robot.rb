@@ -19,6 +19,9 @@ class Robot
         @max_position_y = table_height - 1
         # table height of 5 => max_position_y = 4
 
+        @location_of_objects = []
+        # array containing objects with {position_x, position_y} where objects are placed
+
         @is_placed = false
     end
 
@@ -43,13 +46,29 @@ class Robot
 
         case @position.direction
         when :EAST
-            @position.x < @max_position_x ? @position.x += 1 : move_accepted = false
+            if (@position.x < @max_position_x && !check_if_object_ahead?(@position.x + 1, @position.y))
+                @position.x += 1 
+            else 
+                move_accepted = false
+            end
         when :WEST
-            @position.x > @min_position_x ? @position.x -= 1 : move_accepted = false
+            if (@position.x > @min_position_x && !check_if_object_ahead?(@position.x - 1, @position.y))
+                @position.x -= 1 
+            else 
+                move_accepted = false
+            end
         when :NORTH
-            @position.y < @max_position_y ? @position.y += 1 : move_accepted = false
+            if (@position.y < @max_position_y && !check_if_object_ahead?(@position.x, @position.y + 1))
+                @position.y += 1 
+            else 
+                move_accepted = false
+            end
         when :SOUTH
-            @position.y > @min_position_y ? @position.y -= 1 : move_accepted = false
+            if (@position.y > @min_position_y && !check_if_object_ahead?(@position.x, @position.y - 1))
+                @position.y -= 1 
+            else 
+                move_accepted = false
+            end
         end
 
         if move_accepted
@@ -57,7 +76,7 @@ class Robot
         else
             {
                 execution_succesful: false,
-                error_message: "Moving will result in Robot falling off the table"
+                error_message: "Moving will result in Robot falling off the table or hitting a placed object"
             }
         end
     end
@@ -86,5 +105,44 @@ class Robot
             direction: @position.direction,
             graphical_map: nil
         }
+    end
+
+    def place_object
+        object_placeable = true
+
+        object_coordinates = {
+            position_x: @position.x, 
+            position_y: @position.y
+        }
+
+        case @position.direction
+        when :EAST
+            @position.x < @max_position_x ? object_coordinates[:position_x] += 1 : object_placeable = false
+        when :WEST
+            @position.x > @min_position_x ? object_coordinates[:position_x] -= 1 : object_placeable = false
+        when :NORTH
+            @position.y < @max_position_y ? object_coordinates[:position_y] += 1 : object_placeable = false
+        when :SOUTH
+            @position.y > @min_position_y ? object_coordinates[:position_y] -= 1 : object_placeable = false
+        end
+
+        if object_placeable && !@location_of_objects.include?(object_coordinates)
+            @location_of_objects.push(object_coordinates)
+            @@succesful_execution
+        else
+            {
+                execution_succesful: false,
+                error_message: "Obstacle cannot be placed - Invalid position ahead",
+            }
+        end
+    end
+
+    private
+
+    def check_if_object_ahead?(position_x, position_y)
+        @location_of_objects.include?({
+            position_x: position_x, 
+            position_y: position_y
+        })
     end
 end

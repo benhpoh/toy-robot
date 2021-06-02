@@ -37,4 +37,14 @@ class Acceptance_Test < MiniTest::Test
         expected = "X: 3, Y: 3, DIRECTION: NORTH"
         assert_equal(expected, actual)
     end
+
+    def test_place_object
+        command = Command.new
+        command.execute("PLACE 0,0,EAST")
+        command.execute("PLACE_OBJECT")
+        response = command.execute("MOVE")
+        actual = response[:command_successful]
+        expected = false
+        assert_equal(expected, actual)
+    end
 end

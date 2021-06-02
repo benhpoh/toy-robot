@@ -74,6 +74,12 @@
 - ~~Robot class unit test~~
 - ~~If...else block to disregard commands before robot is placed~~
 - ~~Validation method to block MOVE command if robot falls off table~~
+- Implement PLACE_OBJECT command
+    - ~~Where would object be placed? Assume coordinate directly ahead of robot~~
+    - ~~Check position of robot, verify if position directly ahead is a valid position~~
+    - ~~Place object if position is valid~~
+- MOVE command needs to be refactored. Check if robot will fall off table / into object
+- ~~How to store location of OBJECTs~~ (Array containing list of object locations)
 
 ---
 ## Credits

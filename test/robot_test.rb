@@ -216,3 +216,44 @@ class Robot_Move_Test < MiniTest::Test
     end
 
 end
+class Robot_Place_Object_Test < MiniTest::Test
+    def test_place_object_in_valid_position
+        robot = Robot.new(5,5)
+        robot.place("0,0,EAST")
+        place_response = robot.place_object
+
+        actual = place_response[:execution_succesful]
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_place_object_in_valid_position_2
+        robot = Robot.new(5,5)
+        robot.place("4,4,SOUTH")
+        place_response = robot.place_object
+
+        actual = place_response[:execution_succesful]
+        expected = true
+        assert_equal(expected, actual)
+    end
+
+    def test_place_object_in_invalid_position
+        robot = Robot.new(5,5)
+        robot.place("0,0,WEST")
+        place_response = robot.place_object
+
+        actual = place_response[:execution_succesful]
+        expected = false
+        assert_equal(expected, actual)
+    end
+
+    def test_place_object_in_invalid_position_2
+        robot = Robot.new(5,5)
+        robot.place("0,4,NORTH")
+        place_response = robot.place_object
+
+        actual = place_response[:execution_succesful]
+        expected = false
+        assert_equal(expected, actual)
+    end
+end

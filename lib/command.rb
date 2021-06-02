@@ -51,6 +51,8 @@ class Command
                 return @command_response
             end
             execution_result = @robot.place(argument)
+        when :PLACE_OBJECT
+            execution_result = @robot.place_object
         when :MOVE
             execution_result = @robot.move
         when :LEFT
